@@ -1,0 +1,33 @@
+- level00 ===== 
+    --> faire un ls -la pour voir tous les fichiers = rien
+    --> faire un find "find / -name "flag00*" 2>/dev/null" ou "grep -R "flag00" / 2>/dev/null" = rien
+
+    --> find / -user flag00 -group flag00 2>/dev/null | grep -v 'proc'
+
+    find / -user flag00 -group flag00 :
+        find / : Recherche récursivement à partir de la racine du système de fichiers (/).
+        -user flag00 : Filtre pour ne trouver que les fichiers dont le propriétaire est l'utilisateur flag00.
+        -group flag00 : Filtre pour ne trouver que les fichiers dont le groupe est flag00.
+
+    2>/dev/null :
+        Redirige les erreurs standard (stderr, représenté par 2) vers /dev/null, 
+        ce qui signifie que toutes les erreurs générées par la commande find 
+        (comme les refus d'accès à certains dossiers) sont ignorées et ne s'affichent pas dans le terminal.
+
+    | grep -v 'proc' :
+        | est un "pipe" qui passe le résultat de la commande find à la commande grep.
+        grep -v 'proc' filtre le résultat en excluant (-v) les lignes contenant le mot proc. 
+        Cela sert généralement à exclure les résultats provenant du système de fichiers virtuel /proc,
+        qui contient des informations sur les processus et d'autres détails du système, mais n'est pas 
+        pertinent pour une recherche de fichiers réels.
+   
+
+    2 fichiers trouve grace a cette commande :
+        /usr/sbin/john
+        /rofs/usr/sbin/john
+
+je ne trouve rien d autre donc je suis sur que le pass est "cdiiddwpgswtgt"
+mais peu etre encrypte donc je vais sur un site pour decrypter 
+et je trouve "nottoohardhere"
+
+voici le site en question : https://www.dcode.fr/chiffre-cesar  
